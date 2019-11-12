@@ -1,0 +1,55 @@
+{
+  "name": "reg-library",
+  "version": "0.1.0",
+  "description": "common reg",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-ali": "^8.0.2",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "lint-staged": "^10.0.0-1",
+    "prettier": "^1.19.1",
+    "rollup": "^1.26.4"
+  },
+  "scripts": {
+    "prettier": "prettier --write index.js",
+    "precommit": "lint-staged",
+    "build": "rm -rf lib && rollup -c rollup.config.js",
+    "lint": "eslint --fix test/*.js && eslint --fix ./*.js ",
+    "test": "npm run build && jest",
+    "prepub": "npm run precommit && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lianmin/reg-library.git"
+  },
+  "keywords": [
+    "common",
+    "regexp"
+  ],
+  "author": "lianmin",
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --ext .js",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/lianmin/reg-library/issues"
+  },
+  "homepage": "https://github.com/lianmin/reg-library#readme"
+}
